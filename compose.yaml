@@ -14,6 +14,9 @@ services:
     expose:
       - "3000"
 
+    networks:
+      - bestseller-network
+
     healthcheck:
       test:
         [
@@ -37,6 +40,14 @@ services:
     ports:
       - "80:80"
 
+    networks:
+      - bestseller-network
+
     depends_on:
       api:
         condition: service_healthy
+
+
+networks:
+  bestseller-network:
+    driver: bridge
